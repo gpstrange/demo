@@ -1,0 +1,189 @@
+/* Variables */
+$ppt-vertical-navigation-width: 280;
+$ppt-vertical-navigation-dense-width: 80;
+
+ppt-vertical-navigation {
+
+    /* Dense appearance overrides */
+    &.ppt-vertical-navigation-appearance-dense {
+
+        &:not(.ppt-vertical-navigation-mode-over) {
+            width: #{$ppt-vertical-navigation-dense-width}px;
+            min-width: #{$ppt-vertical-navigation-dense-width}px;
+            max-width: #{$ppt-vertical-navigation-dense-width}px;
+
+            /* Left positioned */
+            &.ppt-vertical-navigation-position-left {
+
+                /* Side mode */
+                &.ppt-vertical-navigation-mode-side {
+                    margin-left: -#{$ppt-vertical-navigation-dense-width}px;
+                }
+
+                /* Opened */
+                &.ppt-vertical-navigation-opened {
+                    margin-left: 0;
+                }
+            }
+
+            /* Right positioned */
+            &.ppt-vertical-navigation-position-right {
+
+                /* Side mode */
+                &.ppt-vertical-navigation-mode-side {
+                    margin-right: -#{$ppt-vertical-navigation-dense-width}px;
+                }
+
+                /* Opened */
+                &.ppt-vertical-navigation-opened {
+                    margin-right: 0;
+                }
+
+                /* Aside wrapper */
+                .ppt-vertical-navigation-aside-wrapper {
+                    left: auto;
+                    right: #{$ppt-vertical-navigation-dense-width}px;
+                }
+
+                &.ppt-vertical-navigation-hover {
+
+                    .ppt-vertical-navigation-aside-wrapper {
+                        left: auto;
+                        right: #{$ppt-vertical-navigation-width}px;
+                    }
+                }
+            }
+        }
+
+        /* Wrapper */
+        .ppt-vertical-navigation-wrapper {
+
+            /* Content */
+            .ppt-vertical-navigation-content {
+
+                ppt-vertical-navigation-aside-item,
+                ppt-vertical-navigation-basic-item,
+                ppt-vertical-navigation-collapsable-item,
+                ppt-vertical-navigation-group-item {
+
+                    .ppt-vertical-navigation-item-wrapper {
+
+                        .ppt-vertical-navigation-item {
+                            width: #{$ppt-vertical-navigation-width}px - 24px;
+                            min-width: #{$ppt-vertical-navigation-width}px - 24px;
+                            max-width: #{$ppt-vertical-navigation-width}px - 24px;
+
+                            .ppt-vertical-navigation-item-arrow,
+                            .ppt-vertical-navigation-item-badge,
+                            .ppt-vertical-navigation-item-title-wrapper {
+                                transition: opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+                            }
+                        }
+                    }
+                }
+
+                ppt-vertical-navigation-group-item {
+
+                    &:first-of-type {
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+
+        &:not(.ppt-vertical-navigation-hover):not(.ppt-vertical-navigation-mode-over) {
+
+            /* Wrapper */
+            .ppt-vertical-navigation-wrapper {
+
+                /* Content */
+                .ppt-vertical-navigation-content {
+
+                    .ppt-vertical-navigation-item-wrapper {
+
+                        .ppt-vertical-navigation-item {
+                            padding: 10px 16px;
+
+                            .ppt-vertical-navigation-item-arrow,
+                            .ppt-vertical-navigation-item-badge,
+                            .ppt-vertical-navigation-item-title-wrapper {
+                                white-space: nowrap;
+                                opacity: 0;
+                            }
+                        }
+                    }
+
+                    ppt-vertical-navigation-collapsable-item {
+
+                        .ppt-vertical-navigation-item-children {
+                            display: none;
+                        }
+                    }
+
+                    ppt-vertical-navigation-group-item {
+
+                        > .ppt-vertical-navigation-item-wrapper {
+
+                            .ppt-vertical-navigation-item {
+
+                                &:before {
+                                    content: '';
+                                    position: absolute;
+                                    top: 20px;
+                                    width: 23px;
+                                    border-top-width: 2px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        /* Aside wrapper */
+        .ppt-vertical-navigation-aside-wrapper {
+            left: #{$ppt-vertical-navigation-dense-width}px;
+        }
+
+        /* Hover */
+        &.ppt-vertical-navigation-hover {
+
+            .ppt-vertical-navigation-wrapper {
+                width: #{$ppt-vertical-navigation-width}px;
+
+                .ppt-vertical-navigation-content {
+
+                    .ppt-vertical-navigation-item-wrapper {
+
+                        .ppt-vertical-navigation-item {
+
+                            .ppt-vertical-navigation-item-arrow,
+                            .ppt-vertical-navigation-item-badge,
+                            .ppt-vertical-navigation-item-title-wrapper {
+                                white-space: nowrap;
+                                animation: removeWhiteSpaceNoWrap 1ms linear 350ms;
+                                animation-fill-mode: forwards;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .ppt-vertical-navigation-aside-wrapper {
+                left: #{$ppt-vertical-navigation-width}px;
+            }
+        }
+    }
+}
+
+@keyframes removeWhiteSpaceNoWrap {
+    0% {
+        white-space: nowrap
+    }
+    99% {
+        white-space: nowrap
+    }
+    100% {
+        white-space: normal;
+    }
+}

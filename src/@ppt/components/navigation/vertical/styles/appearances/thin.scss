@@ -1,0 +1,97 @@
+/* Variables */
+$ppt-vertical-navigation-thin-width: 80;
+
+ppt-vertical-navigation {
+
+    /* Thin appearance overrides */
+    &.ppt-vertical-navigation-appearance-thin {
+        width: #{$ppt-vertical-navigation-thin-width}px;
+        min-width: #{$ppt-vertical-navigation-thin-width}px;
+        max-width: #{$ppt-vertical-navigation-thin-width}px;
+
+        /* Left positioned */
+        &.ppt-vertical-navigation-position-left {
+
+            &.ppt-vertical-navigation-mode-side {
+                margin-left: -#{$ppt-vertical-navigation-thin-width}px;
+            }
+
+            &.ppt-vertical-navigation-opened {
+                margin-left: 0;
+            }
+        }
+
+        /* Right positioned */
+        &.ppt-vertical-navigation-position-right {
+
+            &.ppt-vertical-navigation-mode-side {
+                margin-right: -#{$ppt-vertical-navigation-thin-width}px;
+            }
+
+            &.ppt-vertical-navigation-opened {
+                margin-right: 0;
+            }
+
+            .ppt-vertical-navigation-aside-wrapper {
+                left: auto;
+                right: #{$ppt-vertical-navigation-thin-width}px;
+            }
+        }
+
+        /* Wrapper */
+        .ppt-vertical-navigation-wrapper {
+
+            /* Content */
+            .ppt-vertical-navigation-content {
+
+                > ppt-vertical-navigation-aside-item,
+                > ppt-vertical-navigation-basic-item {
+                    flex-direction: column;
+                    justify-content: center;
+                    height: 64px;
+                    min-height: 64px;
+                    max-height: 64px;
+                    padding: 0 16px;
+
+                    .ppt-vertical-navigation-item-wrapper {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        .ppt-vertical-navigation-item {
+                            justify-content: center;
+                            padding: 12px;
+                            border-radius: 4px;
+
+                            .ppt-vertical-navigation-item-icon {
+                                margin: 0;
+                            }
+
+                            .ppt-vertical-navigation-item-arrow,
+                            .ppt-vertical-navigation-item-badge-content,
+                            .ppt-vertical-navigation-item-title-wrapper {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+
+                > ppt-vertical-navigation-collapsable-item {
+                    display: none
+                }
+
+                > ppt-vertical-navigation-group-item {
+
+                    > .ppt-vertical-navigation-item-wrapper {
+                        display: none
+                    }
+                }
+            }
+        }
+
+        /* Aside wrapper */
+        .ppt-vertical-navigation-aside-wrapper {
+            left: #{$ppt-vertical-navigation-thin-width}px;
+        }
+    }
+}

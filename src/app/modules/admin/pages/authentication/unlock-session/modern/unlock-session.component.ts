@@ -1,0 +1,64 @@
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { pptAnimations } from '@ppt/animations';
+import { PptAlertType } from '@ppt/components/alert';
+
+@Component({
+    selector     : 'unlock-session-modern',
+    templateUrl  : './unlock-session.component.html',
+    encapsulation: ViewEncapsulation.None,
+    animations   : pptAnimations
+})
+export class UnlockSessionModernComponent implements OnInit
+{
+    @ViewChild('unlockSessionNgForm') unlockSessionNgForm: NgForm;
+
+    alert: { type: PptAlertType; message: string } = {
+        type   : 'success',
+        message: ''
+    };
+    name: string = 'Brian Hughes';
+    showAlert: boolean = false;
+    unlockSessionForm: FormGroup;
+
+    /**
+     * Constructor
+     */
+    constructor(
+        private _formBuilder: FormBuilder
+    )
+    {
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void
+    {
+        // Create the form
+        this.unlockSessionForm = this._formBuilder.group({
+            name    : [
+                {
+                    value   : this.name,
+                    disabled: true
+                }
+            ],
+            password: ['', Validators.required]
+        });
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Unlock
+     */
+    unlock(): void
+    {
+    }
+}
